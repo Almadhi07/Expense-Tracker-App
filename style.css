@@ -21,7 +21,7 @@ H1{
 
 }
 
-h3, header{
+h3, header, ul{
     margin-bottom: 0.5rem;
 }
 
@@ -87,6 +87,7 @@ color: #fff;
 font-size: 0.75rem;
 text-transform: uppercase;
 font-weight: 600px;
+cursor: pointer;
 }
 
 form label{
@@ -102,4 +103,78 @@ form div:first-child{
 
 form div:nth-child(n + 2) {
     flex-basis: calc(50% - 5px);
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 10px;
+    position: relative;
+}
+
+ul li:hover {
+    background: rgba(0, 0, 0,0.1);
+}
+
+.name{
+    flex: 1;
+}
+
+.name h4{
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.name p{
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.amount{
+    font-weight: 600;
+}
+
+.amount.income{
+    color: yellowgreen;
+}
+
+.amount.expense{
+    color: indianred;  
+
+}
+
+.action{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f00;
+    color: #fff;
+    height: 100%;
+    width: 50px;
+    display: grid;
+    place-items: center;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: all 300ms;
+
+}
+
+ul li:hover .action{
+    transform: scaleX(1);
+}
+
+.action svg {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+
+#status {
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
