@@ -31,7 +31,10 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 const list = document.getElementById("transactionList");
+const form = document.getElementById("transactionForm");
 const status = document.getElementById("status");
+
+form.addEventListener("submit", addTransaction);
 
 
 function renderList(){
@@ -68,5 +71,25 @@ list.appendChild(li);
 renderList();
 
 function deleteTransaction(id){
-    alert('delete item');
+    const idex = transactions.findIndex(trx => trx.id === id);
+    transactions.splice(indexedDB, 1);
+    renderList();
+}
+
+function addTransaction(e){
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    transactions.push(
+        {
+            id: transactions.length + 1,
+            name: formData.get("name"),
+            amount: parseFloat(formData.get("amount")),
+            date: new Date(formData.get("date")),
+            type: "on" === FormData.get("type") ? "income" : "expense",
+        });
+
+    this.reset();
+    renderList();
 }
