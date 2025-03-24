@@ -226,7 +226,7 @@ ul li:hover .action{
 
 
 
-/* (phones) */
+/* queries here (phones) */
 @media (max-width: 480px) {
     body {
         padding: 1rem;
