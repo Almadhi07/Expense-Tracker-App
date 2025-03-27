@@ -45,13 +45,6 @@ const transactions = [
     },    
 ];
 
-/*const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    signDisplay: 'always',
-});
-*/
-
 const list = document.getElementById("transactionList");
 const form = document.getElementById("transactionForm");
 const status = document.getElementById("status");
@@ -159,6 +152,8 @@ function loadTransactions() {
 }
 
 transactions.push(...loadTransactions());
+renderList();
+updateBalances("USD");
 
 function deleteTransaction(id) {
     const index = transactions.findIndex(trx => trx.id === id);
@@ -177,7 +172,8 @@ function addTransaction(e) {
         name: formData.get("name"),
         amount: parseFloat(formData.get("amount")),
         date: new Date(formData.get("date")),
-        type: formData.get("type") ? "income" : "expense"
+        type: form.querySelector("#type").checked ? "income" : "expense"
+
     };
 
     transactions.push(newTransaction);
@@ -186,12 +182,7 @@ function addTransaction(e) {
     renderList();
 }
 
-
-
 updateBalances("USD");
-
-
-
 
 form.addEventListener("submit", addTransaction);
 
