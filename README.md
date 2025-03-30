@@ -15,12 +15,21 @@ User-Friendly Interface: The app provides an intuitive and responsive UI, built 
                                  Installation & Setup
 
 Clone the repository:
+<<<<<<< HEAD
               Step 1: git clone https://github.com/yourusername/expense-tracker.git
               cd expense-tracker
             
               Step 2: npm install   (Make sure you have Node.js installed on your computer. Then run the following command to install necessary dependencies)
             
             Step 3: npm start This will start the application on http://localhost:1776. You can open this URL in your web browser to use the app.
+=======
+Step 1: git clone https://github.com/yourusername/expense-tracker.git
+cd expense-tracker
+
+Step 2: npm install   (Make sure you have Node.js installed on your computer. Then run the following command to install necessary dependencies) 
+
+Step 3: npm start This will start the application on http://localhost:1776. You can open this URL in your web browser to use the app.
+>>>>>>> da73c70e3b3847c3e1af59c82deea53c6fddb83a
 
 
                                   Resources
@@ -28,6 +37,9 @@ Clone the repository:
 Heroicons: The trash icon used in the app is from Heroicons.
 
 Exchange Rate API: The app fetches real-time exchange rates from ExchangeRate-API.  
+<<<<<<< HEAD
 
 
  
+=======
+>>>>>>> da73c70e3b3847c3e1af59c82deea53c6fddb83a
