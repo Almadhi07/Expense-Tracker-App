@@ -22,11 +22,16 @@ const currencySelector = document.getElementById("currency");
 
 async function renderList(targetCurrency = "USD") {
     list.innerHTML = "";
+    const clearAllBtn = document.getElementById("clearAllBtn");
 
     if (transactions.length === 0) {
         status.textContent = "No transactions.";
+        if (clearAllBtn) clearAllBtn.style.display = "none";
         return;
     }
+
+    if (clearAllBtn) clearAllBtn.style.display = "block";
+    status.textContent = "";
 
     const exchangeRate = await getExchangeRate(targetCurrency);
     const formatter = new Intl.NumberFormat("en-US", {
@@ -47,7 +52,7 @@ async function renderList(targetCurrency = "USD") {
             <div class="amount ${type}">
                 <span>${formatter.format(convertedAmount)} ${targetCurrency}</span>
             </div>
-            <div class="action" onclick="deleteTransaction(${id})">
+            <div class="action" onclick="deleteTransaction(${id})" title="Delete transaction">
                 ❌
             </div>
         `;
@@ -56,9 +61,19 @@ async function renderList(targetCurrency = "USD") {
 }
 
 function deleteTransaction(id) {
-    const index = transactions.findIndex(trx => trx.id === id);
-    if (index !== -1) {
+    const transaction = transactions.find(trx => trx.id === id);
+    if (transaction && confirm(`Are you sure you want to delete "${transaction.name}"?`)) {
+        const index = transactions.findIndex(trx => trx.id === id);
         transactions.splice(index, 1);
+        saveTransactions();
+        renderList(currencySelector.value);
+        updateBalances(currencySelector.value);
+    }
+}
+
+function clearAllTransactions() {
+    if (transactions.length > 0 && confirm(`Are you sure you want to delete all ${transactions.length} transaction(s)? This action cannot be undone.`)) {
+        transactions.length = 0;
         saveTransactions();
         renderList(currencySelector.value);
         updateBalances(currencySelector.value);
