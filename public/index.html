@@ -34,7 +34,10 @@
             </div>
         </header>
         <section>
-            <h3>Transactions</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h3>Transactions</h3>
+                <button id="clearAllBtn" onclick="clearAllTransactions()" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; font-size: 0.8rem; cursor: pointer;">Clear All</button>
+            </div>
             <ul id="transactionList"></ul>
             <div id="status"></div>
             
